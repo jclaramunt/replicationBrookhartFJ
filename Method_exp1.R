@@ -1,5 +1,4 @@
 
-
 Method_exp1<- function(SimData, model){
   
   
@@ -76,6 +75,12 @@ Method_exp1<- function(SimData, model){
     PS <- PS$fitted.values
     
     
+  }else if(model==8){
+    
+    PS <- glm(A ~ 1, family = binomial(link = "probit"), data = SimData)
+    
+    PS <- PS$fitted.values
+    
   }  
   
   
@@ -91,8 +96,13 @@ Method_exp1<- function(SimData, model){
   SimData<-cbind(SimData,bPS)
   
     
-  output<-glm(formula = Y ~ 1 + B1 + B2 + B3 + B4 +B5 +B6 + A, family=poisson(link=log), data = SimData)
+  outmodel<-glm(formula = Y ~ 1 + B1 + B2 + B3 + B4 +B5 +B6 + A, family=poisson(link=log), data = SimData)
   
+  gamma<-outmodel$coefficients[length(outmodel$coefficients)]
+    
+  c<-0#MISSING  
+  
+  output<-list(gamma=gamma, c=c)
   
   return(output)
   

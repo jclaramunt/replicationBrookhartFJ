@@ -3,6 +3,7 @@
 # Total number of rows of Design = TotalCells
 #first load one workspace, for example, cell 1 of the Design matrix
 #save the number of replications within that cell
+
 Row <- 1
 load(file.path("results",paste("MyResult", "Row", Row,".Rdata" , sep ="")))
 K <- nrow(MyResult)

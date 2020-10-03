@@ -1,6 +1,6 @@
 
 
-Method_exp1<- function(SimData, model){
+Method_exp2<- function(SimData, model){
   
   
   Y<-SimData$Y
@@ -69,7 +69,7 @@ Method_exp1<- function(SimData, model){
     
     
   }else if(model==7){
-  
+    
     
     PS <- glm(A ~ X1 + X2 +X3, family = binomial(link = "probit"), data = SimData)
     
@@ -90,7 +90,7 @@ Method_exp1<- function(SimData, model){
   
   SimData<-cbind(SimData,bPS)
   
-    
+  
   output<-glm(formula = Y ~ 1 + B1 + B2 + B3 + B4 +B5 +B6 + A, family=poisson(link=log), data = SimData)
   
   
